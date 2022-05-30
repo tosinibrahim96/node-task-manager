@@ -6,6 +6,7 @@ require("dotenv").config();
  * Initialize express app
  */
 const app = express();
+app.use(express.static('./public'));
 app.use(express.json());
 
 /**
@@ -38,9 +39,6 @@ const start = async () => {
 /**
  * routes
  */
-app.get("/hello", (req, res) => {
-  res.send("Task Manager App");
-});
 
 app.use("/api/v1/tasks", tasks);
 
