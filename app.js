@@ -1,12 +1,14 @@
 const express = require("express");
 const tasks = require("./routes/tasks");
+const notFound = require("./middlewares/not-found");
+
 require("dotenv").config();
 
 /**
  * Initialize express app
  */
 const app = express();
-app.use(express.static('./public'));
+app.use(express.static("./public"));
 app.use(express.json());
 
 /**
@@ -41,5 +43,6 @@ const start = async () => {
  */
 
 app.use("/api/v1/tasks", tasks);
+app.use(notFound);
 
 start();
