@@ -1,6 +1,7 @@
 const express = require("express");
 const tasks = require("./routes/tasks");
 const notFound = require("./middlewares/not-found");
+const errorHandler = require("./middlewares/error-handler");
 
 require("dotenv").config();
 
@@ -44,5 +45,6 @@ const start = async () => {
 
 app.use("/api/v1/tasks", tasks);
 app.use(notFound);
+app.use(errorHandler);
 
 start();
